@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конкурсный портал - онлайн конкурсы с голосованием</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Конкурс<span>Портал</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#contests">Конкурсы</a></li>
+                        <li><a href="#winners">Победители</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Онлайн конкурсы с голосованием</h1>
+                <p>Участвуйте в конкурсах, голосуйте за лучшие работы и выигрывайте призы!</p>
+                <a href="#contests" class="btn">Смотреть конкурсы</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Активные конкурсы -->
+    <section id="contests" class="contests-section">
+        <div class="container">
+            <h2>Активные конкурсы</h2>
+            <div class="contests-grid">
+                <!-- Конкурс 1 -->
+                <div class="contest-card">
+                    <div class="contest-image">
+                        <img src="https://photowebexpo.ru/assets/uploads/images/PHOTOGRAPHY/COMPETITIONS/Landscape-Photographer-of-the-Year/22/PhotoWebExpo-03-1-Max-Rive-ILPOTY-22.jpg" alt="Фотоконкурс">
+                    </div>
+                    <div class="contest-info">
+                        <h3>Фотоконкурс "Лучший пейзаж"</h3>
+                        <p>Примите участие в нашем фотоконкурсе и покажите свои лучшие пейзажные снимки!</p>
+                        <div class="contest-details">
+                            <span class="date">До 15 декабря</span>
+                            <span class="participants">25 участников</span>
+                        </div>
+                        <button class="btn vote-btn" data-contest="1">Проголосовать</button>
+                    </div>
+                </div>
+
+                <!-- Конкурс 2 -->
+                <div class="contest-card">
+                    <div class="contest-image">
+                        <img src="https://xn--80ajjine0d.xn--p1ai/sites/default/files/styles/konkurs/public/pictures/foto-mirglazami.png?itok=hia1E1zL" alt="Рисунок конкурс">
+                    </div>
+                    <div class="contest-info">
+                        <h3>Конкурс рисунков "Мир глазами детей"</h3>
+                        <p>Детский конкурс рисунков для детей от 5 до 12 лет. Тема: "Мир глазами детей".</p>
+                        <div class="contest-details">
+                            <span class="date">До 20 декабря</span>
+                            <span class="participants">42 участника</span>
+                        </div>
+                        <button class="btn vote-btn" data-contest="2">Проголосовать</button>
+                    </div>
+                </div>
+
+                <!-- Конкурс 3 -->
+                <div class="contest-card">
+                    <div class="contest-image">
+                        <img src="https://visterra.ru/wp-content/uploads/snow_chaga_001.jpg" alt="Кулинарный конкурс">
+                    </div>
+                    <div class="contest-info">
+                        <h3>Кулинарный конкурс "Лучший десерт"</h3>
+                        <p>Поделитесь рецептом своего самого вкусного десерта и выиграйте кулинарный набор!</p>
+                        <div class="contest-details">
+                            <span class="date">До 10 декабря</span>
+                            <span class="participants">18 участников</span>
+                        </div>
+                        <button class="btn vote-btn" data-contest="3">Проголосовать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Система голосования -->
+    <section class="voting-section">
+        <div class="container">
+            <h2>Система голосования</h2>
+            <div class="voting-container">
+                <div class="voting-instructions">
+                    <h3>Как проголосовать?</h3>
+                    <ol>
+                        <li>Выберите конкурс из списка выше</li>
+                        <li>Нажмите кнопку "Проголосовать"</li>
+                        <li>Просмотрите работы участников</li>
+                        <li>Выберите понравившуюся работу и нажмите "Голосовать"</li>
+                        <li>Ваш голос будет учтен сразу же!</li>
+                    </ol>
+                    <p class="note">Примечание: Вы можете проголосовать только один раз в каждом конкурсе.</p>
+                </div>
+                <div class="vote-results">
+                    <h3>Текущие результаты</h3>
+                    <div class="results-container">
+                        <!-- Результаты будут заполняться через JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно голосования -->
+    <div id="voteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Голосование за конкурс</h2>
+            <div class="participants-list">
+                <!-- Список участников будет заполняться через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>КонкурсПортал</h3>
+                    <p>Лучшая платформа для проведения онлайн-конкурсов с системой голосования.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>Email: info@konkursportal.ru</p>
+                    <p>Телефон: +7 (999) 123-45-67</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#contests">Конкурсы</a></li>
+                        <li><a href="#winners">Победители</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 КонкурсПортал. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
