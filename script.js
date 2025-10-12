@@ -1,4 +1,3 @@
-// Данные конкурсов и участников
 const contestsData = {
     1: {
         title: "Фотоконкурс 'Лучший пейзаж'",
@@ -29,15 +28,11 @@ const contestsData = {
     }
 };
 
-// Хранилище для голосов пользователя
 let userVotes = JSON.parse(localStorage.getItem('userVotes')) || {};
 
-// Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    // Обновляем результаты голосования
     updateResults();
     
-    // Добавляем обработчики для кнопок голосования
     const voteButtons = document.querySelectorAll('.vote-btn');
     voteButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -46,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Закрытие модального окна
     const modal = document.getElementById('voteModal');
     const closeBtn = document.querySelector('.close');
     
@@ -61,27 +55,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Открытие модального окна для голосования
 function openVotingModal(contestId) {
     const modal = document.getElementById('voteModal');
     const modalTitle = document.getElementById('modalTitle');
     const participantsList = document.querySelector('.participants-list');
     
-    // Устанавливаем заголовок
     modalTitle.textContent = contestsData[contestId].title;
     
-    // Очищаем список участников
     participantsList.innerHTML = '';
     
-    // Проверяем, голосовал ли уже пользователь в этом конкурсе
     const hasVoted = userVotes[contestId];
     
-    // Добавляем участников
     contestsData[contestId].participants.forEach(participant => {
         const participantItem = document.createElement('div');
         participantItem.className = 'participant-item';
         
-        // Проверяем, голосовал ли пользователь за этого участника
         const isVotedFor = hasVoted === participant.id;
         
         participantItem.innerHTML = `
@@ -103,42 +91,32 @@ function openVotingModal(contestId) {
         participantsList.appendChild(participantItem);
     });
     
-    // Показываем модальное окно
     modal.style.display = 'block';
 }
 
-// Голосование за участника
 function voteForParticipant(contestId, participantId) {
-    // Проверяем, не голосовал ли уже пользователь в этом конкурсе
     if (userVotes[contestId]) {
         alert('Вы уже проголосовали в этом конкурсе!');
         return;
     }
     
-    // Увеличиваем количество голосов
     const participant = contestsData[contestId].participants.find(p => p.id === participantId);
     participant.votes++;
     
-    // Сохраняем голос пользователя
     userVotes[contestId] = participantId;
     localStorage.setItem('userVotes', JSON.stringify(userVotes));
     
-    // Обновляем результаты
     updateResults();
     
-    // Закрываем модальное окно
     document.getElementById('voteModal').style.display = 'none';
     
-    // Показываем сообщение об успешном голосовании
     alert('Спасибо за ваш голос!');
 }
 
-// Обновление результатов голосования
 function updateResults() {
     const resultsContainer = document.querySelector('.results-container');
     resultsContainer.innerHTML = '';
     
-    // Для каждого конкурса отображаем результаты
     Object.keys(contestsData).forEach(contestId => {
         const contest = contestsData[contestId];
         const contestResults = document.createElement('div');
@@ -148,10 +126,8 @@ function updateResults() {
         contestTitle.textContent = contest.title;
         contestResults.appendChild(contestTitle);
         
-        // Сортируем участников по количеству голосов
         const sortedParticipants = [...contest.participants].sort((a, b) => b.votes - a.votes);
         
-        // Находим максимальное количество голосов для расчета процентов
         const maxVotes = Math.max(...sortedParticipants.map(p => p.votes));
         
         sortedParticipants.forEach(participant => {
